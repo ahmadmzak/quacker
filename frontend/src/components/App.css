@@ -1,0 +1,10 @@
+.section {
+  /*min-width: 602px;*/
+  padding: 1rem;
+  border: 1px solid blue;
+}
+
+.dashboard {
+  padding: 1rem;
+  border: 1px solid blue;
+}
