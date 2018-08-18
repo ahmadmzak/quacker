@@ -44,6 +44,7 @@ const Signup = ({
             prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
             placeholder="Name"
             name="name"
+            disabled={isSubmitting}
             value={values.name}
           />
         </Form.Item>
@@ -68,6 +69,7 @@ const Signup = ({
             prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
             placeholder="Email"
             name="email"
+            disabled={isSubmitting}
             value={values.email}
           />
         </Form.Item>
@@ -83,6 +85,7 @@ const Signup = ({
             type="password"
             placeholder="Password"
             name="password"
+            disabled={isSubmitting}
             value={values.password}
           />
         </Form.Item>
@@ -100,6 +103,7 @@ const Signup = ({
             type="password"
             placeholder="Repeat Password"
             name="passwordRepeat"
+            disabled={isSubmitting}
             value={values.passwordRepeat}
           />
         </Form.Item>
@@ -114,6 +118,7 @@ const Signup = ({
           <Button
             type="primary"
             htmlType="submit"
+            loading={isSubmitting}
             disabled={isSubmitting}
             style={{ width: "30%", margin: "auto", fontWeight: "bold" }}
           >

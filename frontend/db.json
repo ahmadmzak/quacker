@@ -5,5 +5,10 @@
 			"title": "title 1",
 			"author": "Ahmed"
 		}
-	]
+	],
+	"users": [{
+		"id": 1,
+		"email": "ahmadmzak@gmail.com",
+		"password": "abc123"	
+	}]
 }

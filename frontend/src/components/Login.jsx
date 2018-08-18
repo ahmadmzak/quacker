@@ -44,6 +44,7 @@ const Login = ({
           prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
           placeholder="Email"
           name="email"
+          disabled={isSubmitting}
           value={values.email}
         />
       </Form.Item>
@@ -59,6 +60,7 @@ const Login = ({
           type="password"
           placeholder="Password"
           name="password"
+          disabled={isSubmitting}
           value={values.password}
         />
       </Form.Item>
@@ -66,6 +68,8 @@ const Login = ({
         <Button
           type="primary"
           htmlType="submit"
+          loading={isSubmitting}
+          disabled={isSubmitting}
           style={{ marginRight: "1rem", fontWeight: "bold" }}
         >
           Log in

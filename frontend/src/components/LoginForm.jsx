@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Login from "./Login";
@@ -15,16 +16,19 @@ const validationSchema = yup.object().shape({
 });
 
 class LoginForm extends Component {
-  handleSubmit = (values, { resetForm, setErrors, setSubmitting }) => {
-    // some async function
-    setTimeout(() => {
-      console.log(values);
-      // if error
-      // setError({ email: "Email already taken" })
-      // else
-      // resetForm()
+  handleSubmit = async (values, { resetForm, setErrors, setSubmitting }) => {
+    const data = await fetch("http://localhost:3000/users/1");
+    const user = await data.json();
+    const { history } = this.props;
+    if (user.email === values.email && user.password === values.password) {
       resetForm();
-    }, 1000);
+      setTimeout(() => {
+        history.push("/");
+        this.props.handleLogin(true);
+      }, 0);
+    } else {
+      setErrors({ password: "Email or password invalid." });
+    }
     setSubmitting(false);
   };
   render() {
@@ -42,4 +46,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

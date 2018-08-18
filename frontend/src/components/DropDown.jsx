@@ -19,10 +19,10 @@ class DropDown extends Component {
         trigger={["click"]}
         onVisibleChange={this.disableTooltip}
         overlay={
-          <Menu theme="dark" style={{ width: "12rem", marginTop: "0.7rem" }}>
+          <Menu style={{ width: "12rem", marginTop: "0.7rem" }}>
             <Menu.Item>
               <Link to="/profile">
-                <h2 style={{ color: "white" }}>Ahmed Zakir</h2>
+                <h2>Ahmed Zakir</h2>
                 <h5 style={{ color: "grey", marginTop: "-0.5rem" }}>
                   @ahmadmzak
                 </h5>

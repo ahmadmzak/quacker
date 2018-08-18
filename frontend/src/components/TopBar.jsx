@@ -60,7 +60,7 @@ class TopBar extends Component {
               marginDown: "1rem"
             }}
           >
-            <DropDown logOut={this.props.logOut} />
+            <DropDown logOut={() => this.props.handleLogin(false)} />
             <Button type="primary" size="default" style={{ margin: "0 1rem" }}>
               Quack
             </Button>
