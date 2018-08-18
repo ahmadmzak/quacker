@@ -36,7 +36,9 @@ class DropDown extends Component {
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item>
-              <Link to="">Log out</Link>
+              <Link to="/" onClick={() => this.props.logOut()}>
+                Log out
+              </Link>
             </Menu.Item>
           </Menu>
         }

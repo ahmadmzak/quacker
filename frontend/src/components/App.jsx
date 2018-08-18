@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import Main from "./Main";
 import TopBar from "./TopBar";
+import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
 
 import "./App.css";
 
@@ -22,14 +25,26 @@ const Notifications = () => (
 );
 
 class App extends Component {
+  state = {
+    login: false
+  };
+  logOut = () => this.setState({ login: false });
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <TopBar onShowMessages={this.toggleMessages} />
-          <Route exact path="/" component={Home} />
-          <Route path="/notifications" component={Notifications} />
-        </div>
+        {this.state.login ? (
+          <div>
+            <TopBar onShowMessages={this.toggleMessages} logOut={this.logOut} />
+            <Route exact path="/" component={Home} />
+            <Route path="/notifications" component={Notifications} />
+          </div>
+        ) : (
+          <div>
+            <Route exact path="/" component={Main} />
+            <Route path="/signup" component={SignupForm} />
+            <Route path="/login" component={LoginForm} />
+          </div>
+        )}
       </BrowserRouter>
     );
   }

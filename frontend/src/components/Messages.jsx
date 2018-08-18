@@ -1,17 +1,22 @@
 import React from "react";
+import MessagesHeader from "./MessagesHeader";
 import { Modal } from "antd";
 
 const Messages = props => (
   <Modal
     closable
-    centered
     zIndex={1}
     footer={null}
     maskClosable={true}
+    width="46rem"
     style={{ top: "10vh" }}
     visible={props.visible}
-    title="Direct Messages"
+    title={<MessagesHeader />}
     onCancel={() => props.handleMessages(false)}
+    bodyStyle={{
+      height: "80vh",
+      overflowY: "scroll"
+    }}
   >
     <h1>I am a modal!</h1>
   </Modal>

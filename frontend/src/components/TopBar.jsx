@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Badge, Button, Layout, Menu, Icon } from "antd";
+import { Button, Layout, Icon } from "antd";
+import MenuBar from "./MenuBar";
 import DropDown from "./DropDown";
 import Messages from "./Messages";
 
@@ -8,14 +8,8 @@ const { Header } = Layout;
 
 class TopBar extends Component {
   state = {
-    current: window.location.pathname.split("/")[1] || "home",
     loading: false,
     messages: false
-  };
-  handleClick = e => {
-    if (e.key !== "ignore" && e.key !== "messages") {
-      this.setState({ current: e.key });
-    }
   };
   handleMessages = bool => {
     this.setState({ messages: bool });
@@ -40,51 +34,7 @@ class TopBar extends Component {
             justifyContent: "space-between"
           }}
         >
-          <Menu
-            theme="light"
-            onClick={this.handleClick}
-            selectedKeys={[this.state.current]}
-            mode="horizontal"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              lineHeight: "48px",
-              width: "33.3%"
-              /*border: "1px solid red"*/
-            }}
-          >
-            <Menu.Item
-              key="home"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <Badge offset={[-9, -18]} dot={this.state.current === "home"} />
-              <Icon type="home" style={{ fontSize: "1.2rem" }} />
-              <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.Item
-              key="notifications"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <Badge
-                offset={[-9, -18]}
-                dot={this.state.current === "notifications"}
-              />
-              <Icon type="bell" style={{ fontSize: "1.2rem" }} />
-              <Link to="/notifications">Notifications</Link>
-            </Menu.Item>
-            <Menu.Item
-              key="messages"
-              onClick={() => this.handleMessages(true)}
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <Badge
-                offset={[-9, -18]}
-                dot={this.state.current === "messages"}
-              />
-              <Icon type="mail" style={{ fontSize: "1.2rem" }} />
-              Messages
-            </Menu.Item>
-          </Menu>
+          <MenuBar handleMessages={this.handleMessages} />
           <div
             style={{
               display: "flex",
@@ -110,7 +60,7 @@ class TopBar extends Component {
               marginDown: "1rem"
             }}
           >
-            <DropDown />
+            <DropDown logOut={this.props.logOut} />
             <Button type="primary" size="default" style={{ margin: "0 1rem" }}>
               Quack
             </Button>
