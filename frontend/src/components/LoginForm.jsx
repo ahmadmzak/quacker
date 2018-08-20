@@ -41,6 +41,8 @@ class LoginForm extends Component {
         validationSchema={validationSchema}
         component={Login}
         onSubmit={this.handleSubmit}
+        validateOnBlur={false}
+        validateOnChange={false}
       />
     );
   }

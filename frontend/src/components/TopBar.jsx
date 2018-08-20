@@ -1,19 +1,23 @@
 import React, { Component } from "react";
-import { Button, Layout, Icon } from "antd";
+import { Button, Layout, Icon, Modal } from "antd";
 import MenuBar from "./MenuBar";
 import DropDown from "./DropDown";
 import Messages from "./Messages";
+import Quack from "./Quack";
 
 const { Header } = Layout;
 
 class TopBar extends Component {
   state = {
+    quack: false,
     loading: false,
     messages: false
   };
   handleMessages = bool => {
     this.setState({ messages: bool });
   };
+  showQuackModal = () => this.setState({ quack: true });
+  hideQuackModal = () => this.setState({ quack: false });
   render() {
     return (
       <Header
@@ -61,14 +65,30 @@ class TopBar extends Component {
             }}
           >
             <DropDown logOut={() => this.props.handleLogin(false)} />
-            <Button type="primary" size="default" style={{ margin: "0 1rem" }}>
+            <Button
+              type="primary"
+              style={{ margin: "0 1rem" }}
+              onClick={this.showQuackModal}
+            >
               Quack
             </Button>
+            <Modal
+              title={
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <h3 style={{ fontWeight: "bold" }}>Compose new Quack</h3>
+                </div>
+              }
+              footer={null}
+              visible={this.state.quack}
+              onCancel={this.hideQuackModal}
+            >
+              <Quack expandable={false} />
+            </Modal>
+            <Messages
+              visible={this.state.messages}
+              handleMessages={this.handleMessages}
+            />
           </div>
-          <Messages
-            visible={this.state.messages}
-            handleMessages={this.handleMessages}
-          />
         </div>
       </Header>
     );
