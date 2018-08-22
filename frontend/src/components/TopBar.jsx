@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, Layout, Icon, Modal } from "antd";
-import MenuBar from "./MenuBar";
+import { Button, Col, Layout, Icon, Modal, Row } from "antd";
+import ResponsiveMenuBar from "./ResponsiveMenuBar";
 import DropDown from "./DropDown";
 import Messages from "./Messages";
 import Quack from "./Quack";
@@ -22,52 +22,65 @@ class TopBar extends Component {
     return (
       <Header
         style={{
-          display: "flex",
-          justifyContent: "center",
           position: "fixed",
           zIndex: "1",
-          width: "100%",
-          height: "48px",
-          backgroundColor: "white"
+          width: "100vw",
+          height: "3.1rem",
+          backgroundColor: "white",
+          padding: "0"
         }}
       >
-        <div
+        <Row
+          type="flex"
+          justify="space-around"
+          align="center"
           style={{
-            width: "1200px",
-            display: "flex",
-            justifyContent: "space-between"
+            maxWidth: "1200px",
+            minWidth: "320px",
+            //border: "1px solid red",
+            height: "3.1rem",
+            margin: "auto",
+            width: "100%"
           }}
         >
-          <MenuBar handleMessages={this.handleMessages} />
-          <div
+          <Col
+            span={10}
+            style={{
+              border: "1px solid blue"
+            }}
+          >
+            <ResponsiveMenuBar handleMessages={this.handleMessages} />
+          </Col>
+          <Col
+            span={2}
             style={{
               display: "flex",
-              justifyContent: "center",
               alignItems: "center",
-              width: "33.3%"
+              justifyContent: "center",
+              border: "1px solid green"
             }}
           >
             {this.state.loading ? (
-              <Icon type="loading" />
+              <Icon type="loading" style={{ fontSize: "1.3rem" }} />
             ) : (
               <a href="/">
                 <Icon type="yuque" style={{ fontSize: "1.3rem" }} />
               </a>
             )}
-          </div>
-          <div
+          </Col>
+          <Col
+            span={10}
             style={{
               display: "flex",
-              justifyContent: "flex-end",
               alignItems: "center",
-              width: "33.3%",
-              marginDown: "1rem"
+              justifyContent: "flex-end",
+              border: "1px solid green"
             }}
           >
             <DropDown logOut={() => this.props.handleLogin(false)} />
             <Button
               type="primary"
-              style={{ margin: "0 1rem" }}
+              style={{ margin: "0 0.5rem" }}
               onClick={this.showQuackModal}
             >
               Quack
@@ -88,8 +101,8 @@ class TopBar extends Component {
               visible={this.state.messages}
               handleMessages={this.handleMessages}
             />
-          </div>
-        </div>
+          </Col>
+        </Row>
       </Header>
     );
   }
