@@ -15,10 +15,12 @@ class Quack extends Component {
   render() {
     return (
       <Row
+        type="flex"
+        justify="center"
         style={{
           backgroundColor: "white",
           padding: `${this.props.expandable ? "1rem" : "0"}`,
-          minWidth: "600px"
+          width: "100%"
         }}
       >
         <Col span={24}>

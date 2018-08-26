@@ -12,12 +12,13 @@ class Feed extends PureComponent {
     return (
       <Row
         type="flex"
-        justify="space-around"
+        justify="center"
+        align="space-around"
         style={{
           backgroundColor: "white",
-          marginTop: "1rem",
-          padding: "1rem 0",
-          minWidth: "600px"
+          margin: "0.5rem 0 0 0",
+          padding: "0.75rem 0",
+          width: "100%"
         }}
       >
         <Col span={4}>
@@ -29,7 +30,7 @@ class Feed extends PureComponent {
             />
           </Link>
         </Col>
-        <Col span={17} pull={3}>
+        <Col span={16} sm={{ pull: 3 }} style={{ marginLeft: "1rem" }}>
           <Row tyle="flex" align="center" justify="start">
             <Link to="/profile">
               <Col span={24}>
@@ -38,7 +39,11 @@ class Feed extends PureComponent {
               </Col>
             </Link>
           </Row>
-          <Row>{this.props.text}</Row>
+          <Row type="flex" justify="start" align="center">
+            <Col span={24} style={{ wordBreak: "break-word" }}>
+              {this.props.text}
+            </Col>
+          </Row>
           <Row type="flex" justify="start" align="center">
             <Col span={2} pull={10}>
               <Button
@@ -47,7 +52,7 @@ class Feed extends PureComponent {
                 <Icon type="retweet" style={{ color: "grey" }} />
               </Button>
             </Col>
-            <Col span={2} pull={10}>
+            <Col span={2} xs={{ pull: 9 }} md={{ pull: 10 }}>
               <Button
                 style={{ border: "none", padding: "0" }}
                 onClick={this.like}

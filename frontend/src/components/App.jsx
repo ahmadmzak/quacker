@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { Layout } from "antd";
 import Main from "./Main";
 import Home from "./Home";
 import TopBar from "./TopBar";
@@ -8,6 +9,7 @@ import LoginForm from "./LoginForm";
 
 import "./App.css";
 
+const { Content } = Layout;
 const Notifications = () => (
   <div>
     <h3 style={{ color: "white", paddingTop: "48px" }}>Notifications</h3>
@@ -23,14 +25,34 @@ class App extends Component {
     return (
       <BrowserRouter>
         {this.state.login ? (
-          <div>
+          <Layout
+            style={{
+              backgroundColor: "rgb(30, 30, 30)",
+              alignItems: "center",
+              width: "100vw",
+              height: "100%"
+            }}
+          >
             <TopBar
               onShowMessages={this.toggleMessages}
               handleLogin={this.handleLogin}
             />
-            <Route exact path="/" component={Home} />
-            <Route path="/notifications" component={Notifications} />
-          </div>
+            <Content
+              style={{
+                padding: "0",
+                margin: "3.7rem auto 0 auto",
+                maxWidth: "1200px",
+                minWidth: "270px",
+                border: "1px solid white",
+                overflowX: "hidden",
+                height: "100%",
+                width: "auto"
+              }}
+            >
+              <Route exact path="/" component={Home} />
+              <Route path="/notifications" component={Notifications} />
+            </Content>
+          </Layout>
         ) : (
           <div>
             <Route exact path="/" component={Main} />

@@ -14,7 +14,7 @@ const Messages = props => (
     title={<MessagesHeader />}
     onCancel={() => props.handleMessages(false)}
     bodyStyle={{
-      height: "80vh",
+      height: "70vh",
       overflowY: "scroll"
     }}
   >

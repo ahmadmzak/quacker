@@ -16,9 +16,21 @@ class TopBar extends Component {
   handleMessages = bool => {
     this.setState({ messages: bool });
   };
+  scrollTop = () => {
+    //document.body.scrollTop = 0; // For Safari
+    //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   showQuackModal = () => this.setState({ quack: true });
   hideQuackModal = () => this.setState({ quack: false });
   render() {
+    const topIcon = (
+      <Icon
+        onClick={this.scrollTop}
+        type={this.state.loading ? "loading" : "yuque"}
+        style={{ fontSize: "1.3rem", cursor: "pointer", color: "#1890ff" }}
+      />
+    );
     return (
       <Header
         style={{
@@ -27,32 +39,34 @@ class TopBar extends Component {
           width: "100vw",
           height: "3.1rem",
           backgroundColor: "white",
-          padding: "0"
+          lineHeight: "3.1rem"
         }}
       >
         <Row
           type="flex"
-          justify="space-around"
+          justify="space-between"
           align="center"
           style={{
+            width: "100%",
             maxWidth: "1200px",
-            minWidth: "320px",
-            //border: "1px solid red",
+            minWidth: "270px",
+            border: "1px solid red",
             height: "3.1rem",
-            margin: "auto",
-            width: "100%"
+            margin: "0 auto"
           }}
         >
           <Col
-            span={10}
+            span={8}
             style={{
+              display: "flex",
+              alignItems: "center",
               border: "1px solid blue"
             }}
           >
             <ResponsiveMenuBar handleMessages={this.handleMessages} />
           </Col>
           <Col
-            span={2}
+            span={8}
             style={{
               display: "flex",
               alignItems: "center",
@@ -60,16 +74,10 @@ class TopBar extends Component {
               border: "1px solid green"
             }}
           >
-            {this.state.loading ? (
-              <Icon type="loading" style={{ fontSize: "1.3rem" }} />
-            ) : (
-              <a href="/">
-                <Icon type="yuque" style={{ fontSize: "1.3rem" }} />
-              </a>
-            )}
+            {topIcon}
           </Col>
           <Col
-            span={10}
+            span={8}
             style={{
               display: "flex",
               alignItems: "center",
@@ -80,7 +88,7 @@ class TopBar extends Component {
             <DropDown logOut={() => this.props.handleLogin(false)} />
             <Button
               type="primary"
-              style={{ margin: "0 0.5rem" }}
+              style={{ margin: "0 0 0 0.5rem" }}
               onClick={this.showQuackModal}
             >
               Quack

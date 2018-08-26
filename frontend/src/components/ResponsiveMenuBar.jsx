@@ -36,6 +36,7 @@ class ResponsiveMenuBar extends Component {
         <MenuBar
           viewportWidth={this.state.viewportWidth}
           handleMessages={handleMessages}
+          onLinkClick={this.handleMenuVisibility}
         />
       );
     }

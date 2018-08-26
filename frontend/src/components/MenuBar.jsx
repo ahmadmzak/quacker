@@ -4,7 +4,7 @@ import { Badge, Icon, Menu } from "antd";
 
 class MenuBar extends Component {
   state = {
-    current: window.location.pathname.split("/")[1] || "home"
+    current: window.location.pathname.split("/")[1] || "/"
   };
 
   handleMessages = () => {
@@ -20,6 +20,11 @@ class MenuBar extends Component {
 
   render() {
     const { onLinkClick, mobileVersion, viewportWidth } = this.props;
+    const style = {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    };
     return (
       <Menu
         theme="light"
@@ -27,36 +32,21 @@ class MenuBar extends Component {
         selectedKeys={[this.state.current]}
         mode={mobileVersion ? "vertical" : "horizontal"}
         style={{
-          //display: "flex",
-          //alignItems: "center",
-          lineHeight: "3rem"
+          display: "flex",
+          alignItems: "center",
+          lineHeight: "2.9rem",
+          justifyContent: "center"
         }}
       >
-        <Menu.Item key="home">
-          <Link
-            onClick={onLinkClick}
-            to="/"
-            style={
-              {
-                /*display: "flex", alignItems: "center"*/
-              }
-            }
-          >
-            <Badge offset={[-9, -18]} dot={this.state.current === "home"} />
+        <Menu.Item key="/" style={style}>
+          <Link onClick={onLinkClick} to="/">
+            <Badge offset={[-9, -18]} dot={this.state.current === "/"} />
             <Icon type="home" style={{ fontSize: "1.2rem" }} />
             {viewportWidth > 1000 && "Home"}
           </Link>
         </Menu.Item>
-        <Menu.Item key="notifications">
-          <Link
-            onClick={onLinkClick}
-            to="/notifications"
-            style={
-              {
-                /*display: "flex", alignItems: "center"*/
-              }
-            }
-          >
+        <Menu.Item key="notifications" style={style}>
+          <Link onClick={onLinkClick} to="/notifications">
             <Badge
               offset={[-9, -18]}
               dot={this.state.current === "notifications"}
@@ -65,19 +55,12 @@ class MenuBar extends Component {
             {viewportWidth > 1000 && "Notifications"}
           </Link>
         </Menu.Item>
-        <Menu.Item
-          key="messages"
-          onClick={this.handleMessages}
-          style={
-            {
-              //display: "flex",
-              //alignItems: "center"
-            }
-          }
-        >
-          <Badge offset={[-9, -18]} dot={this.state.current === "messages"} />
-          <Icon type="mail" style={{ fontSize: "1.2rem" }} />
-          {viewportWidth > 1000 && "Messages"}
+        <Menu.Item key="messages" style={style}>
+          <Link onClick={this.handleMessages} to={this.state.current}>
+            <Badge offset={[-9, -18]} dot={this.state.current === "messages"} />
+            <Icon type="mail" style={{ fontSize: "1.2rem" }} />
+            {viewportWidth > 1000 && "Messages"}
+          </Link>
         </Menu.Item>
       </Menu>
     );
