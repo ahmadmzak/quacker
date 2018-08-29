@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
-import { Button, Col, Icon, Row } from "antd";
+import { Avatar, Button, Col, Icon, Row } from "antd";
 
 class Feed extends PureComponent {
   state = {
@@ -18,16 +18,13 @@ class Feed extends PureComponent {
           backgroundColor: "white",
           margin: "0.5rem 0 0 0",
           padding: "0.75rem 0",
-          width: "100%"
+          width: "100%",
+          border: "1px solid black"
         }}
       >
         <Col span={4}>
           <Link to="/profile">
-            <img
-              src="https://placeimg.com/50/50/any"
-              alt=""
-              style={{ borderRadius: "50%" }}
-            />
+            <Avatar size={56} icon="user" />
           </Link>
         </Col>
         <Col span={16} sm={{ pull: 3 }} style={{ marginLeft: "1rem" }}>

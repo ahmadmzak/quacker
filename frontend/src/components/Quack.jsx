@@ -20,7 +20,8 @@ class Quack extends Component {
         style={{
           backgroundColor: "white",
           padding: `${this.props.expandable ? "1rem" : "0"}`,
-          width: "100%"
+          width: "100%",
+          border: `${this.props.expandable ? "1px solid black" : "none"}`
         }}
       >
         <Col span={24}>

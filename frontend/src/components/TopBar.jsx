@@ -37,9 +37,9 @@ class TopBar extends Component {
           position: "fixed",
           zIndex: "1",
           width: "100vw",
-          height: "3.1rem",
+          height: "3.0rem",
           backgroundColor: "white",
-          lineHeight: "3.1rem"
+          lineHeight: "3.0rem"
         }}
       >
         <Row
@@ -50,8 +50,7 @@ class TopBar extends Component {
             width: "100%",
             maxWidth: "1200px",
             minWidth: "270px",
-            border: "1px solid red",
-            height: "3.1rem",
+            height: "3.0rem",
             margin: "0 auto"
           }}
         >
@@ -59,8 +58,7 @@ class TopBar extends Component {
             span={8}
             style={{
               display: "flex",
-              alignItems: "center",
-              border: "1px solid blue"
+              alignItems: "center"
             }}
           >
             <ResponsiveMenuBar handleMessages={this.handleMessages} />
@@ -70,8 +68,7 @@ class TopBar extends Component {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              border: "1px solid green"
+              justifyContent: "center"
             }}
           >
             {topIcon}
@@ -81,14 +78,13 @@ class TopBar extends Component {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              border: "1px solid green"
+              justifyContent: "flex-end"
             }}
           >
             <DropDown logOut={() => this.props.handleLogin(false)} />
             <Button
               type="primary"
-              style={{ margin: "0 0 0 0.5rem" }}
+              style={{ margin: "0 0 0 0.5rem", borderRadius: "15px" }}
               onClick={this.showQuackModal}
             >
               Quack

@@ -43,7 +43,6 @@ class App extends Component {
                 margin: "3.7rem auto 0 auto",
                 maxWidth: "1200px",
                 minWidth: "270px",
-                border: "1px solid white",
                 overflowX: "hidden",
                 height: "100%",
                 width: "auto"

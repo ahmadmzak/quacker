@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Dropdown, Icon, Menu, Tooltip } from "antd";
+import { Avatar, Dropdown, Icon, Menu, Tooltip } from "antd";
 
 class DropDown extends Component {
   state = {
@@ -51,11 +51,7 @@ class DropDown extends Component {
           onVisibleChange={this.toggleTooltip}
         >
           <a>
-            <img
-              src="https://placeimg.com/30/30/any"
-              alt="profile-pic"
-              style={{ borderRadius: "50%" }}
-            />
+            <Avatar icon="user" />
           </a>
         </Tooltip>
       </Dropdown>
