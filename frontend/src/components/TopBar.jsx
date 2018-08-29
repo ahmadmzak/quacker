@@ -39,7 +39,8 @@ class TopBar extends Component {
           width: "100vw",
           height: "3.0rem",
           backgroundColor: "white",
-          lineHeight: "3.0rem"
+          lineHeight: "3.0rem",
+          borderBottom: "1px solid rgba(30, 30, 30, 0.5)"
         }}
       >
         <Row
@@ -98,6 +99,10 @@ class TopBar extends Component {
               footer={null}
               visible={this.state.quack}
               onCancel={this.hideQuackModal}
+              bodyStyle={{
+                backgroundColor: "rgb(208, 232, 255)",
+                padding: "0"
+              }}
             >
               <Quack expandable={false} />
             </Modal>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Row, Col } from "antd";
+import { Avatar, Button, Input, Row, Col } from "antd";
 
 const { TextArea } = Input;
 
@@ -16,15 +16,18 @@ class Quack extends Component {
     return (
       <Row
         type="flex"
-        justify="center"
+        align="top"
+        justify="space-between"
         style={{
-          backgroundColor: "white",
-          padding: `${this.props.expandable ? "1rem" : "0"}`,
-          width: "100%",
-          border: `${this.props.expandable ? "1px solid black" : "none"}`
+          backgroundColor: "rgb(208, 232, 255)",
+          padding: "1.5em",
+          width: "100%"
         }}
       >
-        <Col span={24}>
+        <Col span={2}>
+          <Avatar icon="user" />
+        </Col>
+        <Col md={{ span: 22 }} xs={{ span: 19 }}>
           <TextArea
             rows={this.state.rows}
             maxLength={160}
@@ -40,7 +43,9 @@ class Quack extends Component {
                 marginTop: "1rem"
               }}
             >
-              <Button type="primary">Quack</Button>
+              <Button type="primary" style={{ borderRadius: "15px" }}>
+                Quack
+              </Button>
             </div>
           )}
         </Col>

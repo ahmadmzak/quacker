@@ -16,10 +16,10 @@ class Feed extends PureComponent {
         align="space-around"
         style={{
           backgroundColor: "white",
-          margin: "0.5rem 0 0 0",
+          //margin: "0.1em 0 0 0",
           padding: "0.75rem 0",
           width: "100%",
-          border: "1px solid black"
+          borderTop: "1px solid rgba(60, 60, 60, 0.2)"
         }}
       >
         <Col span={4}>

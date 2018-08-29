@@ -7,16 +7,17 @@ const Dashboard = props => (
     style={{
       width: "100%",
       height: "100%"
+      //maxHeight: "220px"
     }}
   >
     <div style={{ width: "100%", height: "45%", backgroundColor: "#1890ff" }} />
     <Row
       type="flex"
-      justify="space-around"
+      justify="center"
       style={{
         position: "relative",
         width: "100%",
-        height: "25%"
+        height: "30%"
       }}
     >
       <Col
@@ -32,7 +33,7 @@ const Dashboard = props => (
             style={{
               width: "68px",
               height: "68px",
-              border: "2px solid rgb(70,70,70)",
+              border: "2px solid white",
               borderRadius: "50%"
             }}
           >
@@ -53,33 +54,31 @@ const Dashboard = props => (
           <h4 style={{ marginTop: "-1em", color: "gray" }}>@ahmadmzak</h4>
         </Link>
       </Col>
-    </Row>
-    <Row
-      type="flex"
-      align="middle"
-      justify="space-around"
-      style={{
-        height: "30%",
-        paddingLeft: "7%"
-      }}
-    >
-      <Col span={7}>
-        <Link to="/quacks">
-          <h4 style={{ color: "gray" }}>Quacks</h4>
-          <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
-        </Link>
-      </Col>
-      <Col span={7}>
-        <Link to="/following">
-          <h4 style={{ color: "gray" }}>Following</h4>
-          <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
-        </Link>
-      </Col>
-      <Col span={7}>
-        <Link to="/followers">
-          <h4 style={{ color: "gray" }}>Follwers</h4>
-          <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
-        </Link>
+      <Col span={24}>
+        <Row
+          type="flex"
+          justify="space-around"
+          style={{ padding: "3.5rem 0 0 7%" }}
+        >
+          <Col span={7}>
+            <Link to="/quacks">
+              <h4 style={{ color: "gray" }}>Quacks</h4>
+              <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
+            </Link>
+          </Col>
+          <Col span={7}>
+            <Link to="/following">
+              <h4 style={{ color: "gray" }}>Following</h4>
+              <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
+            </Link>
+          </Col>
+          <Col span={7}>
+            <Link to="/followers">
+              <h4 style={{ color: "gray" }}>Follwers</h4>
+              <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
+            </Link>
+          </Col>
+        </Row>
       </Col>
     </Row>
   </div>

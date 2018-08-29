@@ -35,7 +35,8 @@ class MenuBar extends Component {
           display: "flex",
           alignItems: "center",
           lineHeight: "2.9rem",
-          justifyContent: "center"
+          justifyContent: "center",
+          borderBottom: "1px solid rgba(30, 30, 30, 0.5)"
         }}
       >
         <Menu.Item key="/" style={style}>

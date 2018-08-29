@@ -27,7 +27,7 @@ class App extends Component {
         {this.state.login ? (
           <Layout
             style={{
-              backgroundColor: "rgb(30, 30, 30)",
+              backgroundColor: "rgb(225, 225, 225)",
               alignItems: "center",
               width: "100vw",
               height: "100%"
@@ -40,7 +40,8 @@ class App extends Component {
             <Content
               style={{
                 padding: "0",
-                margin: "3.7rem auto 0 auto",
+                //margin: "3.7rem auto 0 auto",
+                margin: "5em auto 0 auto",
                 maxWidth: "1200px",
                 minWidth: "270px",
                 overflowX: "hidden",

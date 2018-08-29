@@ -7,8 +7,7 @@ import Feed from "./Feed";
 class Home extends Component {
   render() {
     const style = {
-      border: "1px solid black",
-      height: "250px",
+      height: "220px",
       backgroundColor: "white"
     };
     const Feedli = (
