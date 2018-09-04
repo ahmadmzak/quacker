@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Avatar, Button, Col, Menu, Row } from "antd";
 import { Link } from "react-router-dom";
-//import ContentContainer from "./ContentContainer";
+import ContentContainer from "./ContentContainer";
+import Dashboard from "./Dashboard";
 
 class ProfileMenu extends Component {
   constructor(props) {
@@ -36,7 +37,6 @@ class ProfileMenu extends Component {
       zIndex: "1",
       backgroundColor: "white",
       marginTop: "2em",
-      //top: `${this.props.sticky}`,
       display: "flex",
       justifyContent: "flex-start",
       margin: "0",
@@ -45,7 +45,7 @@ class ProfileMenu extends Component {
     };
     const menuStyle = {
       position: "relative",
-      height: "2.9rem",
+      height: "2.95rem",
       zIndex: "100",
       backgroundColor: "white",
       marginTop: "2em",
@@ -53,17 +53,16 @@ class ProfileMenu extends Component {
       display: "flex",
       justifyContent: "flex-start",
       margin: "0",
+      padding: "0",
       alignItems: "center",
-      lineHeight: "3rem"
+      lineHeight: "2.9rem"
     };
     const stickyStyle = {
       position: "fixed",
-      //marginTop: "5em",
       zIndex: "100"
     };
     const stickyAvatar = {
-      marginTop: "-100%",
-      transition: "ease-in 0.2s"
+      transition: "ease-in 0.1s"
     };
     const menu = {
       item: {
@@ -84,6 +83,11 @@ class ProfileMenu extends Component {
         fontSize: "1.2rem",
         fontWeight: "bold"
       }
+    };
+    const contentStyle = {
+      height: "220px",
+      backgroundColor: "white",
+      marginTop: this.state.sticky ? "calc(150px + 3rem)" : "-3rem"
     };
     return (
       <Col style={{ position: "relative" }}>
@@ -110,13 +114,12 @@ class ProfileMenu extends Component {
         <Row
           type="flex"
           align="bottom"
-          //justify="space-between"
           style={
             this.state.sticky
               ? {
                   backgroundColor: "white",
-                  height: "3.1rem",
-                  lineHeight: "3.1rem",
+                  height: "2.9rem",
+                  lineHeight: "2.9rem",
                   margin: "0 auto",
                   marginTop: "5em",
                   width: "100vw",
@@ -124,8 +127,8 @@ class ProfileMenu extends Component {
                 }
               : {
                   backgroundColor: "white",
-                  height: "3.1rem",
-                  lineHeight: "3.1rem",
+                  height: "2.9rem",
+                  lineHeight: "2.9rem",
                   margin: "0 auto"
                 }
           }
@@ -139,36 +142,79 @@ class ProfileMenu extends Component {
             }}
           >
             <Col span={6} order={1} style={style}>
-              <div
-                style={
-                  this.state.sticky
-                    ? {
-                        width: "210px",
-                        height: "210px",
-                        border: "5px solid white",
-                        marginBottom: "100px",
-                        borderRadius: "50%",
-                        ...stickyAvatar
-                      }
-                    : {
-                        width: "210px",
-                        height: "210px",
-                        border: "5px solid white",
-                        marginBottom: "100px",
-                        borderRadius: "50%",
-                        transition: "ease-in 0.2s"
-                      }
-                }
-              >
-                <Avatar icon="user" size={200} />
+              <div>
+                <Avatar
+                  icon="user"
+                  size={200}
+                  style={
+                    this.state.sticky
+                      ? {
+                          border: "5px solid white",
+                          borderRadius: "50%",
+                          ...stickyAvatar
+                        }
+                      : {
+                          border: "5px solid white",
+                          marginBottom: "50px",
+                          borderRadius: "50%",
+                          transition: "ease-out 0.2s",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center"
+                        }
+                  }
+                />
+                <div
+                  style={
+                    this.state.sticky
+                      ? {
+                          margin: "200px 0 400px 0",
+                          height: "3rem",
+                          visibility: "visible",
+                          transition: "all ease-out 0.3s",
+                          display: "flex",
+                          alignItems: "center"
+                        }
+                      : {
+                          margin: "-5px 0 0 0",
+                          height: "3rem",
+                          visibility: "hidden",
+                          transition: "all ease-in 0.2s",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center"
+                        }
+                  }
+                >
+                  <Avatar icon="user" style={{ margin: "0 0.7rem" }} />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "1.1rem",
+                        fontWeight: "bold",
+                        marginBottom: "-1.7rem"
+                      }}
+                    >
+                      Ahmed Zakir
+                    </div>
+                    <div>@ahmadmzak</div>
+                  </div>
+                </div>
               </div>
+              {/*})}*/}
             </Col>
             <Col
               span={12}
               order={2}
               style={{
-                margin: "0 0.9rem 0 -0.9rem",
-                paddingTop: "0.1rem",
+                margin: "0 -1.6rem 0 1.6rem",
                 height: "2.9rem"
               }}
             >
@@ -187,11 +233,8 @@ class ProfileMenu extends Component {
                     : menuStyle
                 }
               >
-                <Menu.Item>
-                  <div />
-                </Menu.Item>
                 <Menu.Item key="quacks">
-                  <Link to="/quacks" style={menu.item}>
+                  <Link to="/profile" style={menu.item}>
                     <div style={menu.itemString}>Quacks</div>
                     <div style={menu.itemNumber}>53</div>
                   </Link>
@@ -199,19 +242,19 @@ class ProfileMenu extends Component {
                 <Menu.Item key="following">
                   <Link to="/following" style={menu.item}>
                     <div style={menu.itemString}>Following</div>
-                    <div style={menu.itemNumber}>32</div>{" "}
+                    <div style={menu.itemNumber}>32</div>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="followers">
                   <Link to="/followers" style={menu.item}>
                     <div style={menu.itemString}>Followers</div>
-                    <div style={menu.itemNumber}>86</div>{" "}
+                    <div style={menu.itemNumber}>86</div>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="likes">
                   <Link to="/likes" style={menu.item}>
                     <div style={menu.itemString}>Likes</div>
-                    <div style={menu.itemNumber}>95</div>{" "}
+                    <div style={menu.itemNumber}>95</div>
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -221,50 +264,36 @@ class ProfileMenu extends Component {
               style={{ ...style, justifyContent: "flex-end" }}
               order={3}
             >
-              <Button type="primary" style={{ borderRadius: "15px" }}>
+              <Button
+                style={{
+                  borderRadius: "15px",
+                  fontWeight: "600"
+                }}
+              >
                 Edit profile
               </Button>
             </Col>
           </div>
         </Row>
+        <ContentContainer
+          style={contentStyle}
+          left={() => <Dashboard />}
+          center={() => (
+            <div
+              className="content"
+              style={{
+                ...contentStyle,
+                backgroundColor: "red",
+                height: "2000px"
+              }}
+            >
+              Aho Desu
+            </div>
+          )}
+          right={() => null}
+        />
       </Col>
     );
-    /*return (
-      <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "center",
-            backgroundColor: "#1890ff",
-            height: "calc(220px + 2.9rem)"
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "white",
-              height: "2.9rem",
-              width: "100%",
-              zIndex: "100"
-            }}
-          >
-            <Menu
-              mode="horizontal"
-              style={this.state.sticky ? { ...stickyStyle, style } : style}
-            >
-              <Menu.Item>
-                <div />
-              </Menu.Item>
-              <Menu.Item>Quacks</Menu.Item>
-              <Menu.Item>Following</Menu.Item>
-              <Menu.Item>Followers</Menu.Item>
-              <Menu.Item>Likes</Menu.Item>
-            </Menu>
-            </div>
-          </div>
-        </div>
-      </div>
-    );*/
   }
 }
 

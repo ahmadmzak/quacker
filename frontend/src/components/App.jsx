@@ -5,7 +5,8 @@ import Home from "./Home";
 import TopBar from "./TopBar";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
-import Profile from "./Profile";
+import ProfileMenu from "./ProfileMenu";
+import ScrollToTop from "./ScrollToTop";
 
 import "./App.css";
 
@@ -23,28 +24,33 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        {this.state.login ? (
-          <div>
-            <TopBar
-              onShowMessages={this.toggleMessages}
-              handleLogin={this.handleLogin}
-            />
+        <ScrollToTop>
+          {this.state.login ? (
+            <div>
+              <TopBar
+                onShowMessages={this.toggleMessages}
+                handleLogin={this.handleLogin}
+              />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/notifications" component={Notifications} />
+                <Route
+                  path="/profile"
+                  render={() => <ProfileMenu sticky={150} />}
+                />
+              </Switch>
+            </div>
+          ) : (
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/notifications" component={Notifications} />
-              <Route path="/profile" render={() => <Profile sticky={22} />} />
+              <Route exact path="/" component={Main} />
+              <Route path="/signup" component={SignupForm} />
+              <Route
+                path="/login"
+                render={() => <LoginForm handleLogin={this.handleLogin} />}
+              />
             </Switch>
-          </div>
-        ) : (
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/signup" component={SignupForm} />
-            <Route
-              path="/login"
-              render={() => <LoginForm handleLogin={this.handleLogin} />}
-            />
-          </Switch>
-        )}
+          )}
+        </ScrollToTop>
       </BrowserRouter>
     );
   }

@@ -35,7 +35,7 @@ class TopBar extends Component {
       <Header
         style={{
           position: "fixed",
-          zIndex: "1",
+          zIndex: "200",
           width: "100vw",
           height: "3.0rem",
           backgroundColor: "white",

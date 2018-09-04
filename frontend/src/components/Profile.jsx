@@ -20,8 +20,10 @@ class Profile extends Component {
           center={() => (
             <div
               className="content"
-              style={{ ...style, backgroundColor: "red", height: "4000px" }}
-            />
+              style={{ ...style, backgroundColor: "red", height: "2000px" }}
+            >
+              Aho Desu
+            </div>
           )}
           right={() => null}
         />
