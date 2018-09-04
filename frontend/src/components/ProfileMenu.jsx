@@ -87,7 +87,7 @@ class ProfileMenu extends Component {
     const contentStyle = {
       height: "220px",
       backgroundColor: "white",
-      marginTop: this.state.sticky ? "calc(150px + 3rem)" : "-3rem"
+      marginTop: this.state.sticky ? "calc(150px + 4rem)" : "-3rem"
     };
     return (
       <Col style={{ position: "relative" }}>

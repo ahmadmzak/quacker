@@ -30,15 +30,15 @@ const Dashboard = props => (
         }}
       >
         <Link to="/profile">
-          <div
-            style={{
-              width: "68px",
-              height: "68px",
-              border: "2px solid white",
-              borderRadius: "50%"
-            }}
-          >
-            <Avatar size={64} icon="user" />
+          <div>
+            <Avatar
+              size={64}
+              icon="user"
+              style={{
+                border: "2px solid white",
+                borderRadius: "50%"
+              }}
+            />
           </div>
         </Link>
       </Col>
