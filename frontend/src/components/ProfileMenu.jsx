@@ -23,10 +23,8 @@ class ProfileMenu extends Component {
     });
   };
   handlePageOffset = () => {
-    console.log(window.pageYOffset);
     if (!this.state.sticky && window.pageYOffset >= this.props.sticky) {
       this.setState({ sticky: true });
-      console.log("Ewww sticky...");
     } else if (this.state.sticky && window.pageYOffset < this.props.sticky) {
       this.setState({ sticky: false });
     }
@@ -38,7 +36,7 @@ class ProfileMenu extends Component {
       zIndex: "1",
       backgroundColor: "white",
       marginTop: "2em",
-      top: `${this.props.sticky}`,
+      //top: `${this.props.sticky}`,
       display: "flex",
       justifyContent: "flex-start",
       margin: "0",
@@ -48,7 +46,7 @@ class ProfileMenu extends Component {
     const menuStyle = {
       position: "relative",
       height: "2.9rem",
-      zIndex: "1",
+      zIndex: "100",
       backgroundColor: "white",
       marginTop: "2em",
       top: `${this.props.sticky}`,
@@ -57,13 +55,15 @@ class ProfileMenu extends Component {
       margin: "0",
       alignItems: "center",
       lineHeight: "3rem"
-      //border: "1px solid green"
-      //boxShadow: "0 1px 0 rgba(0,0,0,0.23)"
     };
     const stickyStyle = {
       position: "fixed",
-      marginTop: "-130px"
-      //width: "100vw"
+      //marginTop: "5em",
+      zIndex: "100"
+    };
+    const stickyAvatar = {
+      marginTop: "-100%",
+      transition: "ease-in 0.2s"
     };
     const menu = {
       item: {
@@ -86,18 +86,24 @@ class ProfileMenu extends Component {
       }
     };
     return (
-      <Col>
+      <Col style={{ position: "relative" }}>
         <Row
           type="flex"
           align="bottom"
-          //justify="space-between"
-          style={{
-            //display: "flex",
-            //alignItems: "flex-end",
-            //justifyContent: "center",
-            backgroundColor: "#1890ff",
-            height: "220px"
-          }}
+          style={
+            this.state.sticky
+              ? {
+                  backgroundColor: "#1890ff",
+                  height: "30px",
+                  width: "100vw",
+                  marginTop: "3em",
+                  ...stickyStyle
+                }
+              : {
+                  backgroundColor: "#1890ff",
+                  height: "220px"
+                }
+          }
         >
           <Col span={24} />
         </Row>
@@ -105,17 +111,24 @@ class ProfileMenu extends Component {
           type="flex"
           align="bottom"
           //justify="space-between"
-          style={{
-            //display: "flex",
-            //alignItems: "flex-end",
-            //justifyContent: "center",
-            backgroundColor: "white",
-            height: "3.1rem",
-            lineHeight: "3.1rem",
-            margin: "0 auto"
-            //boxShadow: "0 1px 1px rgba(0,0,0,0.16)"
-            //border: "1px solid yellow"
-          }}
+          style={
+            this.state.sticky
+              ? {
+                  backgroundColor: "white",
+                  height: "3.1rem",
+                  lineHeight: "3.1rem",
+                  margin: "0 auto",
+                  marginTop: "5em",
+                  width: "100vw",
+                  ...stickyStyle
+                }
+              : {
+                  backgroundColor: "white",
+                  height: "3.1rem",
+                  lineHeight: "3.1rem",
+                  margin: "0 auto"
+                }
+          }
         >
           <div
             style={{
@@ -125,15 +138,27 @@ class ProfileMenu extends Component {
               alignItems: "center"
             }}
           >
-            <Col span={6} order={1} style={{ ...style }}>
+            <Col span={6} order={1} style={style}>
               <div
-                style={{
-                  width: "210px",
-                  height: "210px",
-                  border: "5px solid white",
-                  marginBottom: "100px",
-                  borderRadius: "50%"
-                }}
+                style={
+                  this.state.sticky
+                    ? {
+                        width: "210px",
+                        height: "210px",
+                        border: "5px solid white",
+                        marginBottom: "100px",
+                        borderRadius: "50%",
+                        ...stickyAvatar
+                      }
+                    : {
+                        width: "210px",
+                        height: "210px",
+                        border: "5px solid white",
+                        marginBottom: "100px",
+                        borderRadius: "50%",
+                        transition: "ease-in 0.2s"
+                      }
+                }
               >
                 <Avatar icon="user" size={200} />
               </div>
@@ -146,20 +171,20 @@ class ProfileMenu extends Component {
                 paddingTop: "0.1rem",
                 height: "2.9rem"
               }}
-              /*style={{
-display: "flex",
-alignItems: "center",
-justifyContent: "flex-start",
-height: "2.9rem",
-paddingTop: "0.2rem"
-}}*/
             >
               <Menu
                 mode="horizontal"
                 onClick={this.handleClick}
                 selectedKeys={[this.state.current]}
                 style={
-                  this.state.sticky ? { ...stickyStyle, menuStyle } : menuStyle
+                  this.state.sticky
+                    ? {
+                        ...stickyStyle,
+                        menuStyle,
+                        height: "2.8rem",
+                        lineHeight: "2.8rem"
+                      }
+                    : menuStyle
                 }
               >
                 <Menu.Item>

@@ -13,7 +13,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <ProfileMenu />
+        <ProfileMenu sticky={150} />
         <ContentContainer
           style={style}
           left={() => <Dashboard />}
