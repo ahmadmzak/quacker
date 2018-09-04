@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import { Layout } from "antd";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from "./Main";
 import Home from "./Home";
 import TopBar from "./TopBar";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import Profile from "./Profile";
 
 import "./App.css";
 
-const { Content } = Layout;
 const Notifications = () => (
-  <div>
+  <div className="content">
     <h3 style={{ color: "white", paddingTop: "48px" }}>Notifications</h3>
   </div>
 );
@@ -25,43 +24,26 @@ class App extends Component {
     return (
       <BrowserRouter>
         {this.state.login ? (
-          <Layout
-            style={{
-              backgroundColor: "rgb(225, 225, 225)",
-              alignItems: "center",
-              width: "100vw",
-              height: "100%"
-            }}
-          >
+          <div>
             <TopBar
               onShowMessages={this.toggleMessages}
               handleLogin={this.handleLogin}
             />
-            <Content
-              style={{
-                padding: "0",
-                //margin: "3.7rem auto 0 auto",
-                margin: "5em auto 0 auto",
-                maxWidth: "1200px",
-                minWidth: "270px",
-                overflowX: "hidden",
-                height: "100%",
-                width: "auto"
-              }}
-            >
+            <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/notifications" component={Notifications} />
-            </Content>
-          </Layout>
+              <Route path="/profile" render={() => <Profile sticky={22} />} />
+            </Switch>
+          </div>
         ) : (
-          <div>
+          <Switch>
             <Route exact path="/" component={Main} />
             <Route path="/signup" component={SignupForm} />
             <Route
               path="/login"
               render={() => <LoginForm handleLogin={this.handleLogin} />}
             />
-          </div>
+          </Switch>
         )}
       </BrowserRouter>
     );

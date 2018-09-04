@@ -30,7 +30,7 @@ class Feed extends PureComponent {
         <Col span={16} sm={{ pull: 3 }} style={{ marginLeft: "1rem" }}>
           <Row tyle="flex" align="center" justify="start">
             <Link to="/profile">
-              <Col span={24}>
+              <Col span={24} style={{ color: "#1890ff" }}>
                 Ahmed Zakir
                 <span style={{ color: "grey" }}> @ahmadmzak</span>
               </Col>
