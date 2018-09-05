@@ -7,6 +7,7 @@ class MenuBar extends Component {
     super(props);
     this.state = {
       //current: window.location.pathname.split("/")[1]
+      messages: props.messages || 0,
       notifications: props.notifications || 0
     };
   }
@@ -58,15 +59,18 @@ class MenuBar extends Component {
         <Menu.Item key="notifications" style={style}>
           <Link onClick={onLinkClick} to="/notifications">
             <Badge offset={[-9, -18]} dot={pathname === "notifications"} />
-            <Icon type="bell" style={{ fontSize: "1.2rem" }} />
+            <Badge count={this.state.notifications} offset={[-10, 0]}>
+              <Icon type="bell" style={{ fontSize: "1.2rem" }} />
+            </Badge>
             {viewportWidth > 1000 && "Notifications"}
-            <Badge count={this.state.notifications} offset={[-2, -18]} />
           </Link>
         </Menu.Item>
         <Menu.Item key="messages" style={style}>
           <Link onClick={this.handleMessages} to={window.location.pathname}>
             <Badge offset={[-9, -18]} dot={pathname === "messages"} />
-            <Icon type="mail" style={{ fontSize: "1.2rem" }} />
+            <Badge count={this.state.messages} offset={[-10, 0]}>
+              <Icon type="mail" style={{ fontSize: "1.2rem" }} />
+            </Badge>
             {viewportWidth > 1000 && "Messages"}
           </Link>
         </Menu.Item>

@@ -63,19 +63,43 @@ const Dashboard = props => (
         >
           <Col span={7}>
             <Link to="/quacks">
-              <h4 style={{ color: "gray" }}>Quacks</h4>
+              <h4
+                style={{
+                  color: "gray",
+                  fontWeight: "bold",
+                  marginBottom: "0.1rem"
+                }}
+              >
+                Quacks
+              </h4>
               <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
             </Link>
           </Col>
           <Col span={7}>
             <Link to="/following">
-              <h4 style={{ color: "gray" }}>Following</h4>
+              <h4
+                style={{
+                  color: "gray",
+                  fontWeight: "bold",
+                  marginBottom: "0.1rem"
+                }}
+              >
+                Following
+              </h4>
               <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
             </Link>
           </Col>
           <Col span={7}>
             <Link to="/followers">
-              <h4 style={{ color: "gray" }}>Follwers</h4>
+              <h4
+                style={{
+                  color: "gray",
+                  fontWeight: "bold",
+                  marginBottom: "0.1rem"
+                }}
+              >
+                Follwers
+              </h4>
               <h3 style={{ fontWeight: "bold", color: "#1890ff" }}>50</h3>
             </Link>
           </Col>
