@@ -3,20 +3,27 @@ import { Link } from "react-router-dom";
 import { Badge, Icon, Menu } from "antd";
 
 class MenuBar extends Component {
-  /*state = {
-    current: window.location.pathname.split("/")[1]
-  };*/
+  constructor(props) {
+    super(props);
+    this.state = {
+      //current: window.location.pathname.split("/")[1]
+      notifications: props.notifications || 0
+    };
+  }
 
   handleMessages = () => {
     this.props.handleMessages(true);
     this.props.onLinkClick();
   };
 
-  /*handleClick = e => {
-    if (e.key !== "messages") {
+  handleClick = e => {
+    /*if (e.key !== "messages") {
       this.setState({ current: e.key });
+    }*/
+    if (e.key === "notifications") {
+      this.setState({ notifications: 0 });
     }
-  };*/
+  };
 
   render() {
     const pathname = window.location.pathname.split("/")[1] || "/";
@@ -28,7 +35,7 @@ class MenuBar extends Component {
     };
     return (
       <Menu
-        //onClick={this.handleClick}
+        onClick={this.handleClick}
         selectedKeys={[pathname]}
         mode={mobileVersion ? "vertical" : "horizontal"}
         style={{
@@ -53,6 +60,7 @@ class MenuBar extends Component {
             <Badge offset={[-9, -18]} dot={pathname === "notifications"} />
             <Icon type="bell" style={{ fontSize: "1.2rem" }} />
             {viewportWidth > 1000 && "Notifications"}
+            <Badge count={this.state.notifications} offset={[-2, -18]} />
           </Link>
         </Menu.Item>
         <Menu.Item key="messages" style={style}>

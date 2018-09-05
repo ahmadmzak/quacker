@@ -4,10 +4,13 @@ import { Icon, Popover } from "antd";
 //import throttle from "lodash.throttle";
 
 class ResponsiveMenuBar extends Component {
-  state = {
-    viewportWidth: 0,
-    menuVisibility: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewportWidth: 0,
+      menuVisibility: false
+    };
+  }
 
   componentDidMount() {
     this.saveViewportDimensions();
@@ -33,7 +36,7 @@ class ResponsiveMenuBar extends Component {
     const mobileVersion = this.state.viewportWidth < 576;
     const Menu = (
       <MenuBar
-        props={this.props}
+        {...this.props}
         mobileVersion={mobileVersion}
         viewportWidth={this.state.viewportWidth}
         handleMessages={handleMessages}

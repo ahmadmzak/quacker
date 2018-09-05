@@ -8,11 +8,14 @@ import Quack from "./Quack";
 const { Header } = Layout;
 
 class TopBar extends Component {
-  state = {
-    quack: false,
-    loading: false,
-    messages: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      quack: false,
+      loading: false,
+      messages: false
+    };
+  }
   handleMessages = bool => {
     this.setState({ messages: bool });
   };
@@ -62,7 +65,10 @@ class TopBar extends Component {
               alignItems: "center"
             }}
           >
-            <ResponsiveMenuBar handleMessages={this.handleMessages} />
+            <ResponsiveMenuBar
+              {...this.props}
+              handleMessages={this.handleMessages}
+            />
           </Col>
           <Col
             span={8}
