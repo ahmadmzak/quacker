@@ -5,7 +5,7 @@ import { Modal } from "antd";
 const Messages = props => (
   <Modal
     closable
-    zIndex={1}
+    zIndex={3}
     footer={null}
     maskClosable={true}
     width="46rem"

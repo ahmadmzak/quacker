@@ -30,26 +30,21 @@ class ResponsiveMenuBar extends Component {
 
   render() {
     const { handleMessages } = this.props;
-
-    if (this.state.viewportWidth >= 576) {
-      return (
-        <MenuBar
-          viewportWidth={this.state.viewportWidth}
-          handleMessages={handleMessages}
-          onLinkClick={this.handleMenuVisibility}
-        />
-      );
-    }
-    return (
+    const mobileVersion = this.state.viewportWidth < 576;
+    const Menu = (
+      <MenuBar
+        props={this.props}
+        mobileVersion={mobileVersion}
+        viewportWidth={this.state.viewportWidth}
+        handleMessages={handleMessages}
+        onLinkClick={this.handleMenuVisibility}
+      />
+    );
+    return !mobileVersion ? (
+      Menu
+    ) : (
       <Popover
-        content={
-          <MenuBar
-            mobileVersion
-            viewportWidth={this.state.viewportWidth}
-            handleMessages={handleMessages}
-            onLinkClick={this.handleMenuVisibility}
-          />
-        }
+        content={Menu}
         trigger="click"
         placement="bottom"
         visible={this.state.menuVisibility}
