@@ -62,7 +62,7 @@ const Dashboard = props => (
           style={{ padding: "3.5rem 0 0 7%" }}
         >
           <Col span={7}>
-            <Link to="/quacks">
+            <Link to="/profile">
               <h4
                 style={{
                   color: "gray",

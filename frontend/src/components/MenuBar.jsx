@@ -59,18 +59,24 @@ class MenuBar extends Component {
         <Menu.Item key="notifications" style={style}>
           <Link onClick={onLinkClick} to="/notifications">
             <Badge offset={[-9, -18]} dot={pathname === "notifications"} />
-            <Badge count={this.state.notifications} offset={[-10, 0]}>
-              <Icon type="bell" style={{ fontSize: "1.2rem" }} />
-            </Badge>
+            <Icon type="bell" style={{ fontSize: "1.2rem" }} />
+            <Badge
+              count={this.state.notifications}
+              offset={[-10, -18]}
+              style={{ marginLeft: "-1rem" }}
+            />
             {viewportWidth > 1000 && "Notifications"}
           </Link>
         </Menu.Item>
         <Menu.Item key="messages" style={style}>
           <Link onClick={this.handleMessages} to={window.location.pathname}>
             <Badge offset={[-9, -18]} dot={pathname === "messages"} />
-            <Badge count={this.state.messages} offset={[-10, 0]}>
-              <Icon type="mail" style={{ fontSize: "1.2rem" }} />
-            </Badge>
+            <Icon type="mail" style={{ fontSize: "1.2rem" }} />
+            <Badge
+              count={this.state.messages}
+              offset={[-10, -18]}
+              style={{ marginLeft: "-1rem" }}
+            />
             {viewportWidth > 1000 && "Messages"}
           </Link>
         </Menu.Item>

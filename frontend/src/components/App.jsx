@@ -31,6 +31,7 @@ class App extends Component {
                 onShowMessages={this.toggleMessages}
                 handleLogin={this.handleLogin}
                 notifications={4}
+                messages={1}
               />
               <Switch>
                 <Route exact path="/" component={Home} />
