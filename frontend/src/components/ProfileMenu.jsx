@@ -177,13 +177,11 @@ class ProfileMenu extends Component {
                           alignItems: "center"
                         }
                       : {
-                          margin: "-5px 0 0 0",
                           height: "3rem",
                           visibility: "hidden",
                           transition: "all ease-in 0.2s",
                           display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center"
+                          alignItems: "center"
                         }
                   }
                 >

@@ -9,7 +9,7 @@ const MessagesHeader = () => (
       justifyContent: "space-between"
     }}
   >
-    <h3 style={{ fontWeight: "bold" }}>Direct Messages</h3>
+    <h3 style={{ fontWeight: "bold", marginTop: "1rem" }}>Direct Messages</h3>
     <div
       style={{ display: "flex", alignItems: "center", marginRight: "1.4rem" }}
     >
@@ -21,12 +21,33 @@ const MessagesHeader = () => (
           style={{ fontSize: "1.5rem", lineHeight: "2rem" }}
         />
       </Tooltip>
-      <Button
-        type="primary"
-        style={{ marginLeft: "0.8rem", fontWeight: "bold" }}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "2px solid rgba(24,144,255,0.5)",
+          borderRadius: "19px",
+          marginLeft: "0.8rem",
+          backgroundColor: "white",
+          height: "2.1rem",
+          width: "7.5rem"
+        }}
       >
-        New Message
-      </Button>
+        <Button
+          size="small"
+          type="primary"
+          style={{
+            margin: "auto",
+            //marginLeft: "0.8rem",
+            fontSize: "0.9rem",
+            fontWeight: "bold",
+            borderRadius: "15px"
+          }}
+        >
+          New Message
+        </Button>
+      </div>
     </div>
   </div>
 );
