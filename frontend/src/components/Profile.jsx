@@ -4,9 +4,17 @@ import ProfileMenu from "./ProfileMenu";
 import ContentContainer from "./ContentContainer";
 
 const style = {
-  height: "220px",
-  backgroundColor: "white",
-  marginTop: "-3rem"
+  left: {
+    height: "220px",
+    backgroundColor: "white",
+    marginTop: "-3rem"
+  },
+  center: {
+    marginTop: "-3rem",
+    backgroundColor: "red",
+    height: "2000px"
+  },
+  right: this.left
 };
 
 class Profile extends Component {
@@ -15,17 +23,14 @@ class Profile extends Component {
       <div>
         <ProfileMenu sticky={150} />
         <ContentContainer
-          style={style}
-          left={() => <Dashboard />}
+          //style={style.container}
+          left={() => <Dashboard style={style.left} />}
           center={() => (
-            <div
-              className="content"
-              style={{ ...style, backgroundColor: "red", height: "2000px" }}
-            >
+            <div className="content" style={style.center}>
               Aho Desu
             </div>
           )}
-          right={() => null}
+          right={() => <div style={style.right} />}
         />
       </div>
     );

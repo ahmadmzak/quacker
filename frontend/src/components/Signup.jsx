@@ -1,6 +1,39 @@
 import React from "react";
 import { Form, Icon, Input, Button, Modal } from "antd";
 
+const style = {
+  container: {
+    display: "flex"
+  },
+  icon: {
+    fontSize: "2rem",
+    width: "100%",
+    color: "#1890ff"
+  },
+  modal: {
+    marginTop: "18vh"
+  },
+  inputIcon: {
+    color: "rgba(0,0,0,.25)"
+  },
+  buttonDiv: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    margin: "2rem 0"
+  },
+  button: {
+    width: "30%",
+    margin: "auto",
+    fontWeight: "bold"
+  },
+  charLimit: {
+    display: "flex",
+    justifyContent: "flex-end",
+    margin: "-1.5rem 0.1rem 0 0"
+  }
+};
+
 const Signup = ({
   values,
   errors,
@@ -8,22 +41,13 @@ const Signup = ({
   handleSubmit,
   isSubmitting
 }) => (
-  <div style={{ display: "flex" }}>
+  <div style={style.container}>
     <Modal
       closable={false}
       visible={true}
       footer={null}
-      title={
-        <Icon
-          type="yuque"
-          style={{
-            fontSize: "2rem",
-            width: "100%",
-            color: "#1890ff"
-          }}
-        />
-      }
-      style={{ marginTop: "18vh" }}
+      title={<Icon type="yuque" style={style.icon} />}
+      style={style.modal}
       mask={false}
     >
       <Form
@@ -41,20 +65,14 @@ const Signup = ({
           <Input
             onChange={handleChange}
             maxLength={50}
-            prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+            prefix={<Icon type="user" style={style.inputIcon} />}
             placeholder="Name"
             name="name"
             disabled={isSubmitting}
             value={values.name}
           />
         </Form.Item>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            margin: "-1.5rem 0.1rem 0 0"
-          }}
-        >
+        <div style={style.charLimit}>
           <h5>{`${values.name.length}/50`}</h5>
         </div>
 
@@ -66,7 +84,7 @@ const Signup = ({
           <Input
             onChange={handleChange}
             maxLength={50}
-            prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
+            prefix={<Icon type="mail" style={style.inputIcon} />}
             placeholder="Email"
             name="email"
             disabled={isSubmitting}
@@ -81,7 +99,7 @@ const Signup = ({
           <Input
             onChange={handleChange}
             maxLength={50}
-            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            prefix={<Icon type="lock" style={style.inputIcon} />}
             type="password"
             placeholder="Password"
             name="password"
@@ -99,7 +117,7 @@ const Signup = ({
           <Input
             onChange={handleChange}
             maxLength={50}
-            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            prefix={<Icon type="lock" style={style.inputIcon} />}
             type="password"
             placeholder="Repeat Password"
             name="passwordRepeat"
@@ -107,20 +125,13 @@ const Signup = ({
             value={values.passwordRepeat}
           />
         </Form.Item>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            width: "100%",
-            margin: "2rem 0"
-          }}
-        >
+        <div style={style.buttonDiv}>
           <Button
             type="primary"
             htmlType="submit"
             loading={isSubmitting}
             disabled={isSubmitting}
-            style={{ width: "30%", margin: "auto", fontWeight: "bold" }}
+            style={style.button}
           >
             Sign up
           </Button>

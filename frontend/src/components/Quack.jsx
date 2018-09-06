@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import { Avatar, Button, Input, Row, Col } from "antd";
 
 const { TextArea } = Input;
+const style = {
+  content: {
+    backgroundColor: "rgb(208, 232, 255)",
+    padding: "1.5em",
+    width: "100%"
+  },
+  footer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "1rem"
+  },
+  footerBtn: { borderRadius: "15px" }
+};
 
 class Quack extends Component {
   state = { rows: this.props.expandable ? 1 : 3 };
@@ -18,11 +31,7 @@ class Quack extends Component {
         type="flex"
         align="top"
         justify="space-between"
-        style={{
-          backgroundColor: "rgb(208, 232, 255)",
-          padding: "1.5em",
-          width: "100%"
-        }}
+        style={style.content}
       >
         <Col span={2}>
           <Avatar icon="user" />
@@ -36,14 +45,8 @@ class Quack extends Component {
             onBlur={this.shrink}
           />
           {this.state.rows === 3 && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                marginTop: "1rem"
-              }}
-            >
-              <Button type="primary" style={{ borderRadius: "15px" }}>
+            <div style={style.footer}>
+              <Button type="primary" style={style.footerBtn}>
                 Quack
               </Button>
             </div>

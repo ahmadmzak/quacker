@@ -21,7 +21,7 @@ class Home extends Component {
     }
     return (
       <ContentContainer
-        style={style}
+        //style={style}
         left={() => <Dashboard />}
         center={() => (
           <div>
@@ -33,7 +33,7 @@ class Home extends Component {
             ))}
           </div>
         )}
-        right={() => null}
+        right={() => <div style={style} />}
       />
     );
   }

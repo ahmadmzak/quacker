@@ -2,6 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Checkbox, Form, Icon, Input, Button, Modal } from "antd";
 
+const style = {
+  icon: {
+    fontSize: "2rem",
+    width: "100%",
+    color: "#1890ff"
+  },
+  modal: { marginTop: "18vh" },
+  form: { margin: "auto" },
+  inputIcon: { color: "rgba(0,0,0,.25)" },
+  loginBtn: { marginRight: "1rem", fontWeight: "bold" }
+};
+
 const Login = ({
   values,
   errors,
@@ -13,25 +25,11 @@ const Login = ({
     closable={false}
     visible={true}
     footer={null}
-    title={
-      <Icon
-        type="yuque"
-        style={{
-          fontSize: "2rem",
-          width: "100%",
-          color: "#1890ff"
-        }}
-      />
-    }
-    style={{ marginTop: "18vh" }}
+    title={<Icon type="yuque" style={style.icon} />}
+    style={style.modal}
     mask={false}
   >
-    <Form
-      onSubmit={handleSubmit}
-      style={{
-        margin: "auto"
-      }}
-    >
+    <Form onSubmit={handleSubmit} style={style.form}>
       <h1>Log in to Quacker</h1>
       <Form.Item
         validateStatus={errors.email ? "error" : "success"}
@@ -41,7 +39,7 @@ const Login = ({
         <Input
           onChange={handleChange}
           maxLength={50}
-          prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
+          prefix={<Icon type="mail" style={style.inputIcon} />}
           placeholder="Email"
           name="email"
           disabled={isSubmitting}
@@ -56,7 +54,7 @@ const Login = ({
         <Input
           onChange={handleChange}
           maxLength={50}
-          prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+          prefix={<Icon type="lock" style={style.inputIcon} />}
           type="password"
           placeholder="Password"
           name="password"
@@ -70,7 +68,7 @@ const Login = ({
           htmlType="submit"
           loading={isSubmitting}
           disabled={isSubmitting}
-          style={{ marginRight: "1rem", fontWeight: "bold" }}
+          style={style.loginBtn}
         >
           Log in
         </Button>

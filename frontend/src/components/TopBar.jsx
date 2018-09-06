@@ -6,6 +6,36 @@ import Messages from "./Messages";
 import Quack from "./Quack";
 
 const { Header } = Layout;
+const style = {
+  header: {
+    position: "fixed",
+    zIndex: "200",
+    width: "100vw",
+    height: "3.0rem",
+    backgroundColor: "white",
+    lineHeight: "3.0rem",
+    borderBottom: "1px solid rgba(30, 30, 30, 0.5)"
+  },
+  icon: { fontSize: "1.3rem", cursor: "pointer", color: "#1890ff" },
+  headerRow: {
+    width: "100%",
+    maxWidth: "1200px",
+    minWidth: "270px",
+    height: "3.0rem",
+    margin: "0 auto"
+  },
+  flex: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  modalBody: {
+    backgroundColor: "rgb(208, 232, 255)",
+    padding: "0"
+  },
+  modalHeading: { fontWeight: "bold" },
+  headerBtn: { margin: "0 0 0 0.5rem", borderRadius: "15px" }
+};
 
 class TopBar extends Component {
   constructor(props) {
@@ -31,84 +61,51 @@ class TopBar extends Component {
       <Icon
         onClick={this.scrollTop}
         type={this.state.loading ? "loading" : "yuque"}
-        style={{ fontSize: "1.3rem", cursor: "pointer", color: "#1890ff" }}
+        style={style.icon}
       />
     );
     return (
-      <Header
-        style={{
-          position: "fixed",
-          zIndex: "200",
-          width: "100vw",
-          height: "3.0rem",
-          backgroundColor: "white",
-          lineHeight: "3.0rem",
-          borderBottom: "1px solid rgba(30, 30, 30, 0.5)"
-        }}
-      >
+      <Header style={style.header}>
         <Row
           type="flex"
           justify="space-between"
           align="center"
-          style={{
-            width: "100%",
-            maxWidth: "1200px",
-            minWidth: "270px",
-            height: "3.0rem",
-            margin: "0 auto"
-          }}
+          style={style.headerRow}
         >
-          <Col
-            span={8}
-            style={{
-              display: "flex",
-              alignItems: "center"
-            }}
-          >
+          <Col span={8} style={style.flex}>
             <ResponsiveMenuBar
               {...this.props}
               handleMessages={this.handleMessages}
             />
           </Col>
-          <Col
-            span={8}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
+          <Col span={8} style={style.flex}>
             {topIcon}
           </Col>
           <Col
             span={8}
             style={{
-              display: "flex",
-              alignItems: "center",
+              ...style.flex,
               justifyContent: "flex-end"
             }}
           >
             <DropDown logOut={() => this.props.handleLogin(false)} />
             <Button
               type="primary"
-              style={{ margin: "0 0 0 0.5rem", borderRadius: "15px" }}
+              style={style.headerBtn}
               onClick={this.showQuackModal}
             >
               Quack
             </Button>
             <Modal
               title={
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <h3 style={{ fontWeight: "bold" }}>Compose new Quack</h3>
+                <div style={style.flex}>
+                  <h3 style={style.modalHeading}>Compose new Quack</h3>
                 </div>
               }
               footer={null}
               visible={this.state.quack}
               onCancel={this.hideQuackModal}
-              bodyStyle={{
-                backgroundColor: "rgb(208, 232, 255)",
-                padding: "0"
-              }}
+              bodyStyle={style.modalBody}
             >
               <Quack expandable={false} />
             </Modal>

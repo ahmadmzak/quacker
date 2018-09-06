@@ -3,6 +3,10 @@ import MenuBar from "./MenuBar";
 import { Icon, Popover } from "antd";
 //import throttle from "lodash.throttle";
 
+const style = {
+  hamburgerSize: { fontSize: "1.3rem" }
+};
+
 class ResponsiveMenuBar extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +57,7 @@ class ResponsiveMenuBar extends Component {
         visible={this.state.menuVisibility}
         onVisibleChange={this.handleMenuVisibility}
       >
-        <Icon type="bars" style={{ fontSize: "1.3rem" }} />
+        <Icon type="bars" style={style.hamburgerSize} />
       </Popover>
     );
   }
