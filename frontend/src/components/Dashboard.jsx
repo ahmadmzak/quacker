@@ -12,7 +12,8 @@ const style = {
   background: {
     width: "100%",
     height: "45%",
-    backgroundColor: "#1890ff"
+    backgroundColor: "#1890ff",
+    marginBottom: "0.2rem"
   },
   topRow: {
     position: "relative",
@@ -44,7 +45,7 @@ const style = {
   links: { padding: "3.5rem 0 0 7%" }
 };
 
-const Dashboard = props => (
+const Dashboard = ({ name, username, quacks, followers, following }) => (
   <div style={style.dashboard}>
     <div style={style.background} />
     <Row type="flex" justify="center" style={style.topRow}>
@@ -57,8 +58,8 @@ const Dashboard = props => (
       </Col>
       <Col span={16} style={style.midCol}>
         <Link to="/profile">
-          <h3 style={style.name}>Ahmed Zakir</h3>
-          <h4 style={style.username}>@ahmadmzak</h4>
+          <h3 style={style.name}>{name}</h3>
+          <h4 style={style.username}>{`@${username}`}</h4>
         </Link>
       </Col>
       <Col span={24}>
@@ -66,19 +67,19 @@ const Dashboard = props => (
           <Col span={7}>
             <Link to="/profile">
               <h4 style={style.linkName}>Quacks</h4>
-              <h3 style={style.linkCount}>50</h3>
+              <h3 style={style.linkCount}>{quacks}</h3>
             </Link>
           </Col>
           <Col span={7}>
             <Link to="/following">
               <h4 style={style.linkName}>Following</h4>
-              <h3 style={style.linkCount}>50</h3>
+              <h3 style={style.linkCount}>{following}</h3>
             </Link>
           </Col>
           <Col span={7}>
             <Link to="/followers">
               <h4 style={style.linkName}>Follwers</h4>
-              <h3 style={style.linkCount}>50</h3>
+              <h3 style={style.linkCount}>{followers}</h3>
             </Link>
           </Col>
         </Row>

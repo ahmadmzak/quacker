@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { UserContext } from "./contexts";
 import Main from "./Main";
 import Home from "./Home";
 import TopBar from "./TopBar";
@@ -17,8 +18,20 @@ const Notifications = () => (
 );
 
 class App extends Component {
-  state = {
-    login: true
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: true,
+      user: {}
+    };
+  }
+  componentDidMount() {
+    this.getUserData();
+  }
+  getUserData = async () => {
+    const res = await fetch("http://localhost:3001/users/1");
+    const user = await res.json();
+    this.setState({ user });
   };
   handleLogin = login => this.setState({ login });
   render() {
@@ -26,12 +39,13 @@ class App extends Component {
       <BrowserRouter>
         <ScrollToTop>
           {this.state.login ? (
-            <div>
+            <UserContext.Provider value={this.state.user}>
               <TopBar
                 onShowMessages={this.toggleMessages}
                 handleLogin={this.handleLogin}
                 notifications={4}
                 messages={1}
+                newFeed={true}
               />
               <Switch>
                 <Route exact path="/" component={Home} />
@@ -41,7 +55,7 @@ class App extends Component {
                   render={() => <ProfileMenu sticky={150} />}
                 />
               </Switch>
-            </div>
+            </UserContext.Provider>
           ) : (
             <Switch>
               <Route exact path="/" component={Main} />

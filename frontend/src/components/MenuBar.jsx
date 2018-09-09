@@ -47,7 +47,7 @@ class MenuBar extends Component {
 
   render() {
     const pathname = window.location.pathname.split("/")[1] || "/";
-    const { onLinkClick, mobileVersion, viewportWidth } = this.props;
+    const { onLinkClick, mobileVersion, viewportWidth, newFeed } = this.props;
 
     return (
       <Menu
@@ -58,14 +58,13 @@ class MenuBar extends Component {
       >
         <Menu.Item key="/" style={style.item}>
           <Link onClick={onLinkClick} to="/">
-            <Badge offset={[-9, -18]} dot={pathname === "/"} />
+            <Badge offset={[-9, -18]} dot={newFeed} />
             <Icon type="home" style={style.iconFont} />
             {viewportWidth > 1000 && "Home"}
           </Link>
         </Menu.Item>
         <Menu.Item key="notifications" style={style.item}>
           <Link onClick={onLinkClick} to="/notifications">
-            <Badge offset={[-9, -18]} dot={pathname === "notifications"} />
             <Icon type="bell" style={style.iconFont} />
             <Badge
               count={this.state.notifications}
@@ -77,7 +76,6 @@ class MenuBar extends Component {
         </Menu.Item>
         <Menu.Item key="messages" style={style.item}>
           <Link onClick={this.handleMessages} to={window.location.pathname}>
-            <Badge offset={[-9, -18]} dot={pathname === "messages"} />
             <Icon type="mail" style={style.iconFont} />
             <Badge
               count={this.state.messages}
