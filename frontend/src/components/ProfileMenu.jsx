@@ -23,14 +23,14 @@ const menuNonSticky = {
   position: "relative",
   height: "2.95rem",
   zIndex: "2",
-  backgroundColor: "white",
   marginTop: "2em",
   display: "flex",
   justifyContent: "flex-start",
   margin: "0",
   padding: "0",
   alignItems: "center",
-  lineHeight: "2.9rem"
+  lineHeight: "2.9rem",
+  backgroundColor: "transparent"
 };
 const style = {
   colLeft: {
@@ -133,7 +133,9 @@ const style = {
     backgroundColor: "white",
     height: "2.9rem",
     lineHeight: "2.9rem",
-    margin: "0 auto"
+    margin: "0 auto",
+    width: "100%",
+    maxWidth: "1200px"
   },
   backgroundSticky: {
     backgroundColor: "#1890ff",

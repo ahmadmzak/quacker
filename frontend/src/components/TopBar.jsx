@@ -60,7 +60,7 @@ class TopBar extends Component {
     const topIcon = (
       <Icon
         onClick={this.scrollTop}
-        type={this.state.loading ? "loading" : "yuque"}
+        type={this.state.loading ? "loading" : "twitter"}
         style={style.icon}
       />
     );

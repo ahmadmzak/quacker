@@ -23,7 +23,7 @@ class Main extends Component {
     return (
       <div style={style.main}>
         <div style={style.header}>
-          <Icon type="yuque" style={style.icon} />
+          <Icon type="twitter" style={style.icon} />
           <h1 style={style.heading}>
             See what's happening in the world right now
           </h1>

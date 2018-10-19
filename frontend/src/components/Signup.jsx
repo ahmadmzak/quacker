@@ -46,7 +46,7 @@ const Signup = ({
       closable={false}
       visible={true}
       footer={null}
-      title={<Icon type="yuque" style={style.icon} />}
+      title={<Icon type="twitter" style={style.icon} />}
       style={style.modal}
       mask={false}
     >

@@ -29,7 +29,7 @@ class App extends Component {
     this.getUserData();
   }
   getUserData = async () => {
-    const res = await fetch("http://localhost:3001/users/1");
+    const res = await fetch("http://localhost:3000/users/1");
     const user = await res.json();
     this.setState({ user });
   };
